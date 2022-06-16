@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProductController extends Controller
 {
-    public function listOfProducts()
+    public Collection $products;
+
+    public function listOfProductsByName()
     {
-        $products = DB::select('select * from products');
-        return view('product-list', ['products' => $products]);
+        return view('product-list', ['products' => Product::orderBy('name')->get()]);
+    }
+
+    public function listOfProductsByPrice()
+    {
+        return view('product-list', ['products' => Product::orderBy('price')->get()]);
     }
 
     public function displayProducts()
@@ -19,7 +26,6 @@ class ProductController extends Controller
 
     public function displayID(int $id)
     {
-        return view('product-details', ['id' => $id]);
-
+        return view('product-details', ['product' => Product::find($id)]);
     }
 }
