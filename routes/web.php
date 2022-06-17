@@ -33,3 +33,24 @@ Route::get('/product/price', [Controllers\ProductController::class, "listOfProdu
 Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
     ->where('id', '[0-9]+')
     ->name('productDetails');
+
+Route::get('/backoffice', [Controllers\BackofficeController::class, 'display'])
+    ->name('backoffice');
+
+Route::get('/backoffice/product', [Controllers\BackofficeController::class, 'productList'])
+    ->name('backoffice-productList');
+
+Route::get('/backoffice/product/{product}/edit', [Controllers\BackofficeController::class, 'editProduct'])
+    ->where('product', '[0-9]+')
+    ->name('edit-product');
+
+Route::post('/backoffice/product', [Controllers\BackofficeController::class, 'store'])
+    ->name('store-product');
+
+Route::put('/backoffice/product/{id}', [Controllers\BackofficeController::class, 'update'])
+    ->name('save-edit');
+
+Route::delete('/backoffice/delete/{id}', [Controllers\BackofficeController::class, 'destroy'])
+    ->where('id', '[0-9]+')
+    ->name('delete-product');
+
