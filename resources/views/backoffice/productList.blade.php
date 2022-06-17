@@ -39,6 +39,7 @@
 
 <h1>LIST DES PRODUITS</h1>
 <table>
+    <thead>
     <tr>
         <th>id</th>
         <th>Name</th>
@@ -51,10 +52,9 @@
         <th>available</th>
         <th>Edit</th>
         <th>Delete</th>
-
     </tr>
+    </thead>
     @foreach($products as $product)
-{{--        @dd($product)--}}
         <tr>
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
@@ -66,14 +66,14 @@
             <td>{{$product->quantity}}</td>
             <td>{{$product->available}}</td>
             <td>
-                <form method="get" action="{{ route('edit-product', $product->id) }}">
-                    {{csrf_field()}}
-                    <input type="submit" value="Edit"></form>
+                <a class="btn btn-primary" href="{{ route('edit-product', $product->id) }}">Edit</a>
             </td>
             <td>
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('delete-product', $product) }}"
                       onsubmit="return confirm('Are you sure you wish to delete this record?');">
-                    @if ($product->id) {{ method_field('DELETE') }} @endif
+                    @if ($product->id)
+                        {{ method_field('DELETE') }}
+                    @endif
                     {!! csrf_field() !!}
 
                     <div class="form-group">
@@ -88,3 +88,4 @@
         </tr>
     @endforeach
 </table>
+<a class="btn btn-primary" href="{{ route('create-product') }}">Create new product</a>

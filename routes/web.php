@@ -47,10 +47,13 @@ Route::get('/backoffice/product/{product}/edit', [Controllers\BackofficeControll
 Route::post('/backoffice/product', [Controllers\BackofficeController::class, 'store'])
     ->name('store-product');
 
-Route::put('/backoffice/product/{id}', [Controllers\BackofficeController::class, 'update'])
+Route::any( '/backoffice/product/{product}', [Controllers\BackofficeController::class, 'update'])
+    ->where('product', '[0-9]+')
     ->name('save-edit');
 
 Route::delete('/backoffice/delete/{id}', [Controllers\BackofficeController::class, 'destroy'])
     ->where('id', '[0-9]+')
     ->name('delete-product');
 
+Route::get('backoffice/product/create', [Controllers\BackofficeController::class, 'create1'])
+    ->name('create-product');
