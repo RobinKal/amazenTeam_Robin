@@ -27,7 +27,7 @@ class BackofficeController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect('backoffice/product');
+        return redirect('backoffice/products');
     }
 
     public function store(Request $request)
@@ -45,7 +45,7 @@ class BackofficeController extends Controller
             "categories_id" => $request->categories_id,
         ]);
 
-        return redirect(route("backoffice-productList"));
+        return redirect(route("backoffice.productslist"));
     }
 
 
@@ -59,7 +59,7 @@ class BackofficeController extends Controller
             "name" => $request->input('name'),
             "description" => $request->input('description'),
             "price" => $request->input('price'),
-            "discount" => $request->input('discount') ?? NULL,
+            "discount" => $request->input('discount'),
             "weight" => $request->input('weight'),
             "url_image" => $request->input('url_image'),
             "quantity" => $request->input('quantity') ?? 1,
@@ -67,7 +67,7 @@ class BackofficeController extends Controller
 
         ]);
 
-        return redirect(route('backoffice-productList'));
+        return redirect(route('backoffice.productslist'));
     }
 
     public function create1()

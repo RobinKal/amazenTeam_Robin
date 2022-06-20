@@ -77,7 +77,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('backoffice-productList') }}">
+                        <a class="nav-link" href="{{ route('backoffice.productslist') }}">
                             <span data-feather="shopping-cart"></span>
                             Products
                         </a>

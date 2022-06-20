@@ -10,7 +10,7 @@
         </div>
     @endif
     <form class="form-horizontal" role="form" method="POST"
-          action="{{ route('store-product')}}">
+          action="{{ route('products.store')}}">
 
         @csrf
         <div class="col-2 m-1 background">

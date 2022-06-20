@@ -21,7 +21,7 @@ Route::get('/', Controllers\HomeController::class)
 Route::get('/cart', [Controllers\CartController::class, "displayCart"])
     ->name('cart');
 
-Route::get('/product', [Controllers\ProductController::class, "listOfProductsByName"])
+Route::get('/products', [Controllers\ProductController::class, "listOfProductsByName"])
     ->name('displayProducts');
 
 Route::get('/product/name', [Controllers\ProductController::class, "listOfProductsByName"])
@@ -37,23 +37,23 @@ Route::get('/product/{id}', [Controllers\ProductController::class, 'displayID'])
 Route::get('/backoffice', [Controllers\BackofficeController::class, 'display'])
     ->name('backoffice');
 
-Route::get('/backoffice/product', [Controllers\BackofficeController::class, 'productList'])
-    ->name('backoffice-productList');
+Route::get('/backoffice/products', [Controllers\BackofficeController::class, 'productList'])
+    ->name('backoffice.productslist');
 
-Route::get('/backoffice/product/{product}/edit', [Controllers\BackofficeController::class, 'editProduct'])
+Route::get('/backoffice/products/{product}/edit', [Controllers\BackofficeController::class, 'editProduct'])
     ->where('product', '[0-9]+')
-    ->name('edit-product');
+    ->name('products.edit');
 
-Route::post('/backoffice/product', [Controllers\BackofficeController::class, 'store'])
-    ->name('store-product');
+Route::post('/backoffice/products', [Controllers\BackofficeController::class, 'store'])
+    ->name('products.store');
 
-Route::any( '/backoffice/product/{product}', [Controllers\BackofficeController::class, 'update'])
+Route::put('/backoffice/product/{product}', [Controllers\BackofficeController::class, 'update'])
     ->where('product', '[0-9]+')
-    ->name('save-edit');
+    ->name('products.update');
 
 Route::delete('/backoffice/delete/{id}', [Controllers\BackofficeController::class, 'destroy'])
     ->where('id', '[0-9]+')
-    ->name('delete-product');
+    ->name('products.destroy');
 
 Route::get('backoffice/product/create', [Controllers\BackofficeController::class, 'create1'])
-    ->name('create-product');
+    ->name('products.create');

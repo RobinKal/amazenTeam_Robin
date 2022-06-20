@@ -23,6 +23,16 @@
 
     td {
         border: 1px solid black;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+    th {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        border: 1px solid black;
     }
 
 
@@ -62,14 +72,14 @@
             <td>{{$product->price}}</td>
             <td>{{$product->discount}}</td>
             <td>{{$product->weight}}</td>
-            <td>{{$product->url_image}}</td>
+            <td>{{ substr($product->url_image, 0, 60)}}</td>
             <td>{{$product->quantity}}</td>
             <td>{{$product->available}}</td>
             <td>
-                <a class="btn btn-primary" href="{{ route('edit-product', $product->id) }}">Edit</a>
+                <a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}">Edit</a>
             </td>
             <td>
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('delete-product', $product) }}"
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('products.destroy', $product) }}"
                       onsubmit="return confirm('Are you sure you wish to delete this record?');">
                     @if ($product->id)
                         {{ method_field('DELETE') }}
@@ -88,4 +98,4 @@
         </tr>
     @endforeach
 </table>
-<a class="btn btn-primary" href="{{ route('create-product') }}">Create new product</a>
+<a class="btn btn-primary" href="{{ route('products.create') }}">Create new product</a>
