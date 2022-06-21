@@ -33,8 +33,8 @@ class BackofficeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'price' => 'required',
+            'name' => 'bail|required',
+            'price' => 'bail|required',
         ]);
 
         Product::create([
@@ -53,7 +53,7 @@ class BackofficeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required|numeric',
         ]);
         $product->update([
             "name" => $request->input('name'),

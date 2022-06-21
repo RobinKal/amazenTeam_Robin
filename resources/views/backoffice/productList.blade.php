@@ -80,7 +80,8 @@
             </td>
             <td>
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('products.destroy', $product) }}"
-                      onsubmit="return confirm('Are you sure you wish to delete this record?');">
+                      onsubmit="return confirm('Etes vous sur de vouloir supprimer cet article ?');">
+                    {!! csrf_field() !!}
                     @if ($product->id)
                         {{ method_field('DELETE') }}
                     @endif

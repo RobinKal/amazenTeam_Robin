@@ -24,6 +24,9 @@ Route::get('/cart', [Controllers\CartController::class, "displayCart"])
 Route::get('/products', [Controllers\ProductController::class, "listOfProductsByName"])
     ->name('displayProducts');
 
+Route::get('/products/categories', [Controllers\CategoriesController::class, "index"])
+    ->name('displayCategories');
+
 Route::get('/product/name', [Controllers\ProductController::class, "listOfProductsByName"])
     ->name('displayProducts');
 

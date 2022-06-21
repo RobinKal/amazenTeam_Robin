@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    public function orders(){
+        return $this->belongsToMany(Order_product::class);
+    }
+
+    public function categorie(){
+        return $this->belongsTo(Categorie::class);
+    }
+
     protected $fillable = [
         'name',
         'description',
@@ -16,7 +24,7 @@ class Product extends Model
         'url_image',
         'quantity',
         'available',
-        'categories_id',
+        'categorie_id',
     ];
     public $timestamps = false;
     use HasFactory;

@@ -11,6 +11,7 @@
                 <p>{{$product->weight}} Gr</p>
                 <img src="{{$product->url_image}}" width="80" height="80">
                 <p>{{$product->price / 100}} €</p>
+                <p>{{$product->categorie->name}}</p>
 
             </div>
         @endforeach
