@@ -53,6 +53,10 @@
             <input id="available" name="available" type="number" value="{{$product->available}}">
         </div>
 
+        <div class="col-2 m-1 background">
+            <label>Categorie</label>
+            <input id="categorie_id" name="categorie_id" type="number" value="{{$product->categorie_id}}">
+        </div>
 
         <button type="submit" class="btn btn-primary">
             Save

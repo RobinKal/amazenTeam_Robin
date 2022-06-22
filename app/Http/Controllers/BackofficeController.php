@@ -34,7 +34,10 @@ class BackofficeController extends Controller
     {
         $this->validate($request, [
             'name' => 'bail|required',
-            'price' => 'bail|required',
+            'description' => 'bail|required|alpha',
+            'weight' => 'bail|required|numeric',
+            'price' => 'bail|required|numeric',
+            'categorie_id' => 'bail|required|numeric'
         ]);
 
         Product::create([
@@ -42,7 +45,7 @@ class BackofficeController extends Controller
             "price" => $request->price,
             "weight" => $request->weight,
             "description" => $request->description,
-            "categories_id" => $request->categories_id,
+            "categorie_id" => $request->categories_id,
         ]);
 
         return redirect(route("backoffice.productslist"));
@@ -52,19 +55,26 @@ class BackofficeController extends Controller
     public function update(Request $request, Product $product)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'price' => 'required|numeric',
+            'name' => 'bail|required',
+            'description' => 'bail|required|alpha',
+            'price' => 'bail|required|numeric|gt:0',
+            'discount' => 'numeric|nullable',
+            'weight' => 'bail|required|numeric',
+            'url_image' => 'bail|required|url',
+            'quantity' => 'bail|required|numeric',
+            'available' => 'bail|required|boolean',
+            'categorie_id' => 'bail|required|numeric'
         ]);
         $product->update([
             "name" => $request->input('name'),
             "description" => $request->input('description'),
             "price" => $request->input('price'),
-            "discount" => $request->input('discount'),
+            "discount" => $request->input('discount') ?? NULL,
             "weight" => $request->input('weight'),
             "url_image" => $request->input('url_image'),
             "quantity" => $request->input('quantity') ?? 1,
             "available" => $request->input('available') ?? 1,
-
+            "categorie_id" => $request->input('categorie_id')
         ]);
 
         return redirect(route('backoffice.productslist'));

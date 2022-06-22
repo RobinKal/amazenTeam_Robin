@@ -128,7 +128,7 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/product">Catalogue</a>
+                        <a class="nav-link active" href="/products">Catalogue</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Mobilier Déco</a>
