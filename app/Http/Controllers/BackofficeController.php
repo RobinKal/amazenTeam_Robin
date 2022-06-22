@@ -34,7 +34,7 @@ class BackofficeController extends Controller
     {
         $this->validate($request, [
             'name' => 'bail|required',
-            'description' => 'bail|required|alpha',
+            'description' => 'bail|required|alpha_num',
             'weight' => 'bail|required|numeric',
             'price' => 'bail|required|numeric',
             'categorie_id' => 'bail|required|numeric'
@@ -45,7 +45,7 @@ class BackofficeController extends Controller
             "price" => $request->price,
             "weight" => $request->weight,
             "description" => $request->description,
-            "categorie_id" => $request->categories_id,
+            "categorie_id" => $request->categorie_id,
         ]);
 
         return redirect(route("backoffice.productslist"));

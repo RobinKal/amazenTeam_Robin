@@ -48,16 +48,25 @@
             <input id="quantity" name="quantity" type="number" value="{{$product->quantity}}">
         </div>
 
-        <div class="col-2 m-1 background">
-            <label>Available</label>
-            <input id="available" name="available" type="number" value="{{$product->available}}">
-        </div>
+{{--        <div class="col-2 m-1 background">--}}
+{{--            <label>Available</label>--}}
+{{--            <input id="available" name="available" type="number" value="{{$product->available}}">--}}
+{{--        </div>--}}
 
-        <div class="col-2 m-1 background">
-            <label>Categorie</label>
-            <input id="categorie_id" name="categorie_id" type="number" value="{{$product->categorie_id}}">
-        </div>
+        <label for="available">Availability:</label>
+        <select name="available" id="available">
+            <option value="1">Available</option>
+            <option value="0">Not Available</option>>
+        </select>
 
+
+        <label for="categorie_id">Select a categorie:</label>
+        <select name="categorie_id" id="pet-select">
+            <option value="1">Catégorie 1</option>
+            <option value="2">Catégorie 2</option>
+            <option value="3">Catégorie 3</option>
+            <option value="4">Catégorie 4</option>
+        </select>
         <button type="submit" class="btn btn-primary">
             Save
         </button>

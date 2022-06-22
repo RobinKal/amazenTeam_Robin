@@ -60,6 +60,7 @@
         <th>image Url</th>
         <th>quantity</th>
         <th>available</th>
+        <th>Catégorie</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
@@ -75,6 +76,7 @@
             <td>{{ substr($product->url_image, 0, 60)}}</td>
             <td>{{$product->quantity}}</td>
             <td>{{$product->available}}</td>
+            <td>{{$product->categorie->name}}</td>
             <td>
                 <a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}">Edit</a>
             </td>
