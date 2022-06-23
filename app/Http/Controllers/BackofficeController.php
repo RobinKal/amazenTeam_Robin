@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -65,6 +66,7 @@ class BackofficeController extends Controller
             'available' => 'bail|required|boolean',
             'categorie_id' => 'bail|required|numeric'
         ]);
+
         $product->update([
             "name" => $request->input('name'),
             "description" => $request->input('description'),
@@ -74,8 +76,11 @@ class BackofficeController extends Controller
             "url_image" => $request->input('url_image'),
             "quantity" => $request->input('quantity') ?? 1,
             "available" => $request->input('available') ?? 1,
-            "categorie_id" => $request->input('categorie_id')
+//            "categorie_id" => $request->input('categorie_id')
         ]);
+        dd($request->Categorie::find($request->input('categorie_id')));
+        $product->categorie()->associate(Categorie::find($request->input('categorie_id')));
+        $product->save();
 
         return redirect(route('backoffice.productslist'));
     }

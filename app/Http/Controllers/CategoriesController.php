@@ -12,7 +12,6 @@ class CategoriesController extends Controller
     {
         return view('product-categories', [
             'categories' => Categorie::orderBy('name')->get(),
-            'products' => Product::orderBy('categorie_id')->get()
             ]);
     }
 
