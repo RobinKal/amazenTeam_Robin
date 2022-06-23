@@ -61,7 +61,7 @@
 
 
         <label for="categorie_id">Select a categorie:</label>
-        <select name="categorie_id" id="pet-select">
+        <select name="categorie_id" id="categorie_id">
             <option value="1">Catégorie 1</option>
             <option value="2">Catégorie 2</option>
             <option value="3">Catégorie 3</option>

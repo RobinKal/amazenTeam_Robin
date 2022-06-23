@@ -57,7 +57,7 @@ class BackofficeController extends Controller
     {
         $this->validate($request, [
             'name' => 'bail|required',
-            'description' => 'bail|required|alpha',
+            'description' => 'bail|required|alpha_num',
             'price' => 'bail|required|numeric|gt:0',
             'discount' => 'numeric|nullable',
             'weight' => 'bail|required|numeric',
@@ -76,11 +76,8 @@ class BackofficeController extends Controller
             "url_image" => $request->input('url_image'),
             "quantity" => $request->input('quantity') ?? 1,
             "available" => $request->input('available') ?? 1,
-//            "categorie_id" => $request->input('categorie_id')
+            "categorie_id" => $request->input('categorie_id')
         ]);
-        dd($request->Categorie::find($request->input('categorie_id')));
-        $product->categorie()->associate(Categorie::find($request->input('categorie_id')));
-        $product->save();
 
         return redirect(route('backoffice.productslist'));
     }
