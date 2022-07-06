@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,3 +59,10 @@ Route::delete('/backoffice/delete/{id}', [Controllers\BackofficeController::clas
 
 Route::get('backoffice/product/create', [Controllers\BackofficeController::class, 'create1'])
     ->name('products.create');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
